@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+  
+  </head>
+
+  <body class="house-info-page">
+    <section class="info-section layout-padding" style="padding-bottom: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form action="{{ url_for('predict')}}" method="post">
+                        <h4>INSERT <br>THE HOUSE's <span class="highlight-text">INFO</span></h4>
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label for="waterFrontageSelect"> Waterfront</label>
+                                <select class="custom-select wide-select" required="required" id="waterFrontageSelect" name="waterfront">
+                                    <option value="" disabled selected>Does the house have a waterfront</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="gradeSelect"> Grade</label>
+                                <select class="custom-select wide-select" required="required" id="gradeSelect" name="grade">
+                                    <option value="" disabled selected>Select the grade of the house (1-13)</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="renovationSelect"> Renovation</label>
+                                <select class="custom-select wide-select" required="required" id="renovationSelect" name="renovation">
+                                    <option value="" disabled selected>Has the house been renovated ?</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label for="ageInput"> Age of House</label>
+                                <input type="text" name="age" class="form-control wide-input" id="ageInput" required="required" placeholder="What is the Age of the house?">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="landInput"> Land Area</label>
+                                <input type="number" class="form-control wide-input" name="land" id="landInput" required="required" placeholder="The area of the land in square meter">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="livingAreaInput"> Living Space Area</label>
+                                <input type="number" class="form-control" name="living_area" id="livingAreaInput" required="required" placeholder="The area of the living space in square meter">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label for="conditionSelect"> Condition</label>
+                                <select class="custom-select wide-select" required="required" id="conditionSelect" name="condition">
+                                    <option value="" disabled selected>Select the condition of the house (1-5)</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="viewSelect"> View</label>
+                                <select class="custom-select wide-select" required="required" id="viewSelect" name="view">
+                                    <option value="" disabled selected>Select the rating of the view (0-4)</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="monthSelect"> Sale Month</label>
+                                <select class="custom-select wide-select" required="required" id="monthSelect" name="month">
+                                    <option value="" disabled selected>Select the month</option>
+                                    <option value="Jan">Jan</option>
+                                      <option value="Feb">Feb</option>
+                                      <option value="Mar">Mar</option>
+                                      <option value="Apr">Apr</option>
+                                      <option value="May">May</option>
+                                      <option value="Jun">Jun</option>
+                                      <option value="Jul">Jul</option>
+                                      <option value="Aug">Aug</option>
+                                      <option value="Sep">Sep</option>
+                                      <option value="Oct">Oct</option>
+                                      <option value="Nov">Nov</option>
+                                      <option value="Dec">Dec</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label for="zipCodeInput"> Zipcode</label>
+                                <input type="number" class="form-control wide-input" name="zipcode" id="zipCodeInput" required="required" placeholder="Enter Zipcode (98001 - 98199)" min="98001" max="98199" step="1">
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <button type="submit" class="submit-btn">Predict</button>
+                        </div>
+                    </form>
+                    <h3 class="prediction-text">{{prediction_text | safe}}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
